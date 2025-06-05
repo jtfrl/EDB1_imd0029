@@ -29,8 +29,11 @@ public class s_sortString{
         public static void main(String[] args){
             String[] t={"Phiona", "Rachel", "Haim", "Romy", "Cícero", "Céu", "Potygura Bardo",
             "Boogarins"};
-            System.out.println("Vetor t ordenado: ");
+            String[] r={"Banda", "Artista", "Integrante", "Jazz", "Estilo", "Música", "Cena", "Funk"};
+            System.out.println("Vetores t e r ordenados: ");
             System.out.println(Arrays.toString(sSortName(t)));
+            System.out.println(Arrays.toString(sSortName(r)));
+
         }
     }
 
