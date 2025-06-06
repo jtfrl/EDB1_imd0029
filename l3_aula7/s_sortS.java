@@ -1,4 +1,4 @@
-//q. 5 - lista 3
+//q. 6 - lista 3
 
 import java.util.Arrays;
 
