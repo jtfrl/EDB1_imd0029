@@ -23,7 +23,7 @@ public class inSortThsd{
         return pas;
     }
 
-    public static int[] sSort(int[] vetor){
+    public static int sSort(int[] vetor){
         int tam=vetor.length;
         int pas=1;
         for(int i=0;i<tam-1;i++){
@@ -34,12 +34,12 @@ public class inSortThsd{
             }
             for(int j=i+1;j<tam;j++){
                 pas++;
-                if(vetor[j]<vetor[j+1]){
+                if(vetor[j]<vetor[minIndex]){
                     minIndex=j;
                     pas++;
                 }
             }
-            if(minIndex!=1){
+            if(minIndex!=i){//comparação com o valor do índice
                 int t=vetor[minIndex];
                 vetor[minIndex]=vetor[i];
                 vetor[i]=t;
@@ -66,7 +66,7 @@ public class inSortThsd{
     public static void processArray(int[] arr){
         //int[] arr= new int[1000];
         //teste de print de array
-         System.out.println("1000 números: " + 
+         System.out.println("\n\n1000 números: " + 
          Arrays.toString(Arrays.copyOfRange(arr, 0, 1000)));
 
     }
@@ -76,21 +76,24 @@ public class inSortThsd{
         int[] arr2=Arrays.copyOf(arr1, arr1.length);
         //ordenação de vetores:
 
-        System.out.println("Array original");
+        System.out.println("Array original\n");
         processArray(arr1);
 
 
         //comparação
         
-        System.out.println("\n Seleção: ");
+        System.out.println("\n\n Seleção: ");
         int ss=sSort(arr1);
         processArray(arr1);
-        System.out.println("\n Quantidade de passos: "+ss);
+        System.out.println("\n\n\n Quantidade de passos: "+ss);
 
-        System.out.print("Inserção");
+        System.out.print("\n\n Inserção");
         int is=in_Sort(arr2);
         processArray(arr2);
-        System.out.println("\n Quantidade de passos: "+is);
+        System.out.println("\n\n\n Quantidade de passos: "+is);
+
+        //a seleção por inserção leva mais de 700 mil passos,
+        //enquanto que sSort leva mais de 500 mil passos.
 
     }
 
