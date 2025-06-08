@@ -1,4 +1,11 @@
-//q. 5 - lista 5
+//q. 5 e 6 - lista 5
+//Obs.: o algoritmo atende às duas questões
+/*
+ * - verifica com 'swap' quando não há troca (5)
+ * - não realiza nenhuma roca, já que swap vai para o condicional e aponta 'false'
+ * levando a saída: "Vetor já ordenado". 
+ * 
+ */
 
 import java.util.Arrays;
 
@@ -25,7 +32,6 @@ public class bBSortNoChange{
             
 
     public static void main(String[] args){
-        //int[] n={-30, -7, 192,168,172,139,200,401,404,0,-2};
         int[] v={22,23,24,25,26,27,28,29,30};
         bbsort(v);
         System.out.println(Arrays.toString(v));
