@@ -1,6 +1,7 @@
 //q.1 - Revisão (10.6.25)
 
 import java.util.Arrays;
+//import rnum;
 
 public class seInBb{
     public static void sSort(int[] v){
@@ -29,11 +30,15 @@ public class seInBb{
         for(int i=0;i<tam;i++){ //instrução única de loop
             int k=v[i];
             int j=i-1;
-            while(j>=0 && v[j]>k){
+            /*
+             * o laço a seguir só executa com 
+             * condições específicas
+             */
+            while(j>=0 && v[j]>k){ //permite percorrer todo o array
                 v[j+1]=v[j]; 
                 j--;
             }
-            v[j+1]=k;//
+            v[j+1]=k;
         }
         imprimir(v);
     }
@@ -61,10 +66,13 @@ public class seInBb{
 
     public static void main(String[] args){
         int vetor[]={-30, -7, 192,168,172,139,200,401,404,0,-2};
+        //int arr[]=RandomNumbers();
 
         bbsort(vetor);
         sSort(vetor);
         in_Sort(vetor);
+
+        //bbsort(arr);
     }
 
 
