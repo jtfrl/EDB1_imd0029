@@ -5,9 +5,10 @@ import java.util.Arrays;
 public class seInBb{
     public static void sSort(int[] v){
         int tam=v.length;
-        for(int i=0;i<tam;i++){
+        for(int i=0;i<tam-1;i++){ //para trocar
+            //'tam-1' evita percorrer o array inteiro
             int minIndex=i;
-            for(int j=i+1; j<tam;j++){
+            for(int j=i+1; j<tam;j++){ //localiza o menor
                 if(v[j]<v[minIndex]){
                     minIndex=j; //indice do menor recebe 
                     //o valor de j
@@ -25,7 +26,7 @@ public class seInBb{
 
     public static void in_Sort(int[] v){
         int tam=v.length;
-        for(int i=0;i<tam;i++){
+        for(int i=0;i<tam;i++){ //instrução única de loop
             int k=v[i];
             int j=i-1;
             while(j>=0 && v[j]>k){
