@@ -71,9 +71,17 @@ public class XseInBb{
         for(int i=0;i<num.length;i++){
             num[i]=rand.nextInt(101);
             //1000 numeros aleatórios
-            num2[i]=rand.nextInt(1001);
-            num3[i]=rand.nextInt(10001);
+           
         }
+
+        for(int j=0;j<num2.length;j++){
+             num2[j]=rand.nextInt(1001);
+        }
+        
+        for(int k=0;k<num3.length;k++){
+             num3[k]=rand.nextInt(10001);
+        } 
+
         if(tam==1) return num; 
         if(tam==2) return num2;
         if(tam==3) return num3;
@@ -114,7 +122,7 @@ public class XseInBb{
     */
 
     public static long rtime(int[] v, String s){
-        if(s=="s"){
+        if(s.equals("s")){
             long start=System.nanoTime();
             sSort(v);
             long end=System.nanoTime();
@@ -122,7 +130,7 @@ public class XseInBb{
             System.out.println("\nSelection - Tempo de execução: "+d+" ns.");
             return d;
         }
-        else if(s=="i"){
+        else if(s.equals("i")){
             long start=System.nanoTime();
             in_Sort(v);
             long end=System.nanoTime();
@@ -130,7 +138,7 @@ public class XseInBb{
             System.out.println("\nInsertion - Tempo de execução: "+d+" ns.");
             return d;
         }
-        else if(s=="b"){
+        else if(s.equals("b")){
             long start=System.nanoTime();
             bbsort(v);
             long end=System.nanoTime();
