@@ -86,6 +86,7 @@ public class compRandInvS{
         int vetor[]={-30, -7, 192,168,172,139,200,401,404,0,-2, -150};
         int vetorOrd[]={0, 1, 2, 3, 4, 7, 7, 7, 8, 10, 10, 12};
         int vetorDro[]={11, 11, 9, 9, 9, 8, 7, 7, 6, 4, 2, 2};
+        int vetorPtOrd[]={1,2,3,4,5,6,-2,18,49,9,9,-7};
         
         //vetor com ordem aleatória
         bbsort(vetor);
@@ -103,6 +104,11 @@ public class compRandInvS{
          bbsort(vetorDro);
         sSort(vetorDro);
         in_Sort(vetorDro);
+        System.out.println("\n\n");
+
+        bbsort(vetorPtOrd);
+        sSort(vetorPtOrd);
+        in_Sort(vetorPtOrd);
         System.out.println("\n\n");
 
     }
