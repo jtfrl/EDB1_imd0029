@@ -5,12 +5,13 @@ Esse é o repositório de códigos desenvolvidos na disciplina de Estruturas de 
 
 | Und.          | Tópicos       |
 | ------------- | ------------- |
-| 1             | Busca sequencial<br>
-                    Busca Binária<br>
-                    TADs
-                    Insertion Sort
-                    Selection Sort
-                    Bubble Sort            |
+| 1             | Busca sequencial<br>|
+                    Busca Binária<br>|
+                    TADs            |
+                    Insertion Sort  |
+                    Selection Sort  | 
+                    Bubble Sort     |
+|               |                      | 
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
