@@ -22,13 +22,13 @@ Esse é o repositório de códigos desenvolvidos na disciplina de Estruturas de 
     <tr>
       <td>2</td>
       <td align="left">
-        <td>A ser adicionado</td>
+        <text>A ser adicionado</text>
       </td>
     </tr>
     <tr>
       <td>3</td>
       <td align="left">
-        <td>A ser adicionado</td>
+        <text>A ser adicionado</text>
       </td>
     </tr>
   </tbody>
