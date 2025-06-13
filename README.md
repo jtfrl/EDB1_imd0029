@@ -11,29 +11,23 @@ Esse é o repositório de códigos desenvolvidos na disciplina de Estruturas de 
       <td>1</td>
       <td align="left">
          <ul>
-          <li> Busca sequencial</li>
-          <li>- Busca Binária</li>
+          <li>Busca sequencial</li>
+          <li>Busca Binária</li>
           <li>TADs</li>
           <li>Insertion Sort</li>
           <li>Selection Sort</li>
           <li>Bubble Sort</li>
         </ul>
       </td>
-    </tr>
-    <tr>
-      <td>zebra stripes</td>
-      <td align="center">are neat</td>
-      <td align="right">$1</td>
-    </tr>
-    <tr>
-      <td>
-        <ul>
-          <li>item1</li>
-          <li>item2</li>
-        </ul>
+      <td>2</td>
+      <td align="left">
+        <td>A ser adicionado</td>
       </td>
-      <td align="center">See the list</td>
-      <td align="right">from the first column</td>
+    </tr>
+     <td>2</td>
+      <td align="left">
+        <td>A ser adicionado</td>
+      </td>
     </tr>
   </tbody>
 </table>
