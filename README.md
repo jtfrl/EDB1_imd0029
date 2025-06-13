@@ -19,12 +19,14 @@ Esse é o repositório de códigos desenvolvidos na disciplina de Estruturas de 
           <li>Bubble Sort</li>
         </ul>
       </td>
+    <tr>
       <td>2</td>
       <td align="left">
         <td>A ser adicionado</td>
       </td>
     </tr>
-     <td>2</td>
+    <tr>
+      <td>3</td>
       <td align="left">
         <td>A ser adicionado</td>
       </td>
