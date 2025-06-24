@@ -77,63 +77,74 @@ public class ls_atendimento{
 
     public static void main(String[] args){
         int option=0;
-        ls_atNo pac_no;
+        ls_atendimento fila=new ls_atendimento(); //representa todo o conj. de pacientes
+        boolean running=true;
+         Scanner s=new Scanner(System.in);
+        while(running){
+          
+            System.out.println("\n Menu: \n");
+            System.out.println("1 - Inserir paciente; \n 2 - Chamar próximo paciente; \n"+
+                "3 - Listar pacientes em fila; \n 4 - Sair do programa");
+            System.out.println("\n\n Insira a opção desejada: ");
+            option=s.nextInt();
 
-        Scanner s=new Scanner(System.in);
-        System.out.println("Menu: \n");
-        System.out.println("1 - Inserir paciente; \n 2 - Chamar próximo paciente; \n"+
-            "3 - Listar pacientes em fila\n");
-        System.out.println("\n\n Insira a opção desejada: ");
-        option=s.nextInt();
+            boolean u_opt=false;
 
-        boolean u_opt=false;
-
-        if(option < 1 || option > 3){
-            System.err.println("Digite um número válido");
-        }else{
-            u_opt=true;
-        }
+            if(option < 1 || option > 3){
+                System.err.println("Digite um número válido");
+            }else{
+                u_opt=true;
+            }
 
 
-        if(u_opt){
-            
-            switch (option) {
-                case 1: {
-                    System.out.println("\nInsira a idade: ");
-                    int idade=s.nextInt();
+            if(u_opt){
+                
+                switch (option) {
+                    case 1: {
+                        
+                        System.out.println("\nInsira a idade: ");
+                        int idade=s.nextInt();
 
-                    System.out.println("\nInsira a senha: ");
-                    int senha=s.nextInt();
+                        System.out.println("\nInsira a senha: ");
+                        int senha=s.nextInt();
 
-                    System.out.println("\n Insira o número na fila (ordem de chegada): ");
-                    int arrival=s.nextInt();
+                        System.out.println("\n Insira o número na fila (ordem de chegada): ");
+                        int arrival=s.nextInt();
 
-                    System.out.println("\n Insira o nome do paciente: ");
-                    String nome=s.next();
+                        System.out.println("\n Insira o nome do paciente: ");
+                        String nome=s.next();
 
-                    pac_no.inFim(senha, idade, arrival, nome); //joga para a instância
-                     break;
+                        fila.inFim(senha, idade, arrival, nome); 
+                        fila.inLine(senha, idade, arrival, nome);
 
+                        break;
+
+                    }
+                        
+                case 2: {
+                fila.chamarProximo();
+                break;
                 }
                     
-            case 2: {
-            pac_no.chamarProximo();
-            break;
-            }
-                 
-            case 3: {
-            pac_no.restoFila();
-            break;    
-            }
-                default: { break; }
-            }
+                case 3: {
+                fila.restoFila();
+                break;    
+                }
 
-    }else{
-    System.err.println("Insira uma opção válida.\n");
+                case 4: {
+                running=false;
+                System.out.println("Saindo do programa...");
+                break;    
+                }
+                    default: { break; }
+                }
+
+        }else{
+        System.err.println("Insira uma opção válida.\n");
+        }
     }
-
-    s.close();
-
+     s.close();
+   
     }
 }
 

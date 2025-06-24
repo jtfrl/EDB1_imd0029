@@ -15,6 +15,8 @@ public class ls_atNo{
         this.nome=nome;
         this.prox=null;
     }
+   
+
 }
 
 
