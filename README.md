@@ -36,3 +36,15 @@ Esse é o repositório de códigos desenvolvidos na disciplina de Estruturas de 
     </tr>
   </tbody>
 </table>
+
+
+## Assuntos por pasta
+
+<ul>
+  <li><b>aula01</b>: Introdução a classes e objetos em Java (exemplos de Aluno, Conta Bancária, Produto)</li>
+  <li><b>aula02</b>: Algoritmos de busca (Busca Sequencial e Busca Binária) e exercícios de média</li>
+  <li><b>aula07</b>: Algoritmo de ordenação por seleção (Selection Sort)</li>
+  <li><b>aula08</b>: Algoritmo de ordenação por inserção (Insertion Sort)</li>
+  <li><b>aula09</b>: Algoritmo de ordenação por bolha (Bubble Sort)</li>
+  <li><b>aula10</b>: Listas encadeadas simples e duplas (estrutura de dados)</li>
+</ul>

@@ -1,4 +1,4 @@
-//q. 1: Lista de Exercícios – Listas Encadeadas
+//q. 1: Lista de Exercícios – Listas Encadeadas | parte 1
 
 
 public class ls_atNo{
