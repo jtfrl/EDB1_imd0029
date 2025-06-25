@@ -16,10 +16,12 @@ public class ls_atendimento{
             inicio=novo_no;
             fim=novo_no; //fila com uma só pessoa
         }else{
+            if(idade>=60){
+                //encontra o paciente que tem prioridade para inserir pessoas depois dela
                 ls_atNo atual=inicio;
                 ls_atNo anterior=null;
 
-            while(atual!=null && atual.idade>=60 && idade<60){
+            while(atual!=null && atual.idade>=60){
                 //idade toma o dado sobre um novo paciente
                 anterior=atual;
                 atual=atual.prox;
@@ -29,26 +31,42 @@ public class ls_atendimento{
                 novo_no.prox=inicio; //paciente anterior vai ser o começo da fila
                 inicio=novo_no;
             }else{
+                //insere mais algum paciente com prioridade
                 anterior.prox=novo_no;
                 novo_no.prox=atual;
             }
 
-            if(novo_no.prox==null){
-                fim=novo_no;
+                if(novo_no.prox==null){
+                    fim=novo_no;
+                }
+            }else{
+                ls_atNo atual=inicio;
+                ls_atNo anterior=null;
+
+                while (atual!=null && atual.idade>=60){
+                    anterior=atual;
+                    atual=atual.prox;
+                }
+
+                while (atual != null && atual.arrival < arrival) { //posiciona com ordem de chegada
+                anterior = atual;
+                atual = atual.prox;
+                  }   
+
+                  if(anterior==null){
+                    novo_no.prox=inicio;
+                    inicio=novo_no;
+                  }
+                  else{
+                    anterior.prox=novo_no;
+                    novo_no.prox=atual;
+                  }
+
+                  if(novo_no.prox==null) fim=novo_no;
+
+                //pacientes sem prioridade vão para o fim
             }
-
         }
-    }
-
-    public void inFim(int senha, int idade, int arrival, String nome){
-        ls_atNo no_pessoa = new ls_atNo(senha, idade, arrival, nome);
-       if(inicio==null){
-        inicio=no_pessoa; //assumindo que a fila não tenha ninguem
-       }else{
-        fim.prox=no_pessoa;
-       }
-
-       fim=no_pessoa; //final assume a próxima pessoa que chega
     }
 
     public void chamarProximo(){
@@ -114,7 +132,7 @@ public class ls_atendimento{
                         System.out.println("\n Insira o nome do paciente: ");
                         String nome=s.next();
 
-                        fila.inFim(senha, idade, arrival, nome); 
+                       // fila.inFim(senha, idade, arrival, nome); 
                         fila.inLine(senha, idade, arrival, nome);
 
                         break;
