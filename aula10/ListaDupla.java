@@ -21,18 +21,18 @@ public class ListaDupla{
             NoDuplo ant = null;
 
 
-            while (atual != null) {
-                if (atual.dado == valor) {
+            while (at!= null) {
+                if (at.dado == valor) {
                     if (ant == null) {
-                        inicio = atual.next;
+                        inicio = at.next;
                         if (inicio != null) {
-                            inicio.anterior = null;
+                            inicio.ant = null;
                         }
                     } else {
                         ant.proximo = atual.proximo;
                     }
-                    if (atual.proximo != null) {
-                        atual.proximo.anterior = ant; //atualiza a referencia do próximo no
+                    if (at.proximo != null) {
+                        at.proximo.anterior = ant; //atualiza a referencia do próximo no
                     }
 
                 }
