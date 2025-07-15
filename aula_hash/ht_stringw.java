@@ -3,11 +3,15 @@
 
 
 public class No{
-    int v;
-    No prox=null;
+    String k;
+    int peso;
+    int valor;
+    No prox;
 
-    No(int dado){
-        this.v=dado;
+    No(String dado, int p, int v){
+        this.k=dado;
+        this.peso=p;
+        this.valor=v;
         this.prox=null;
     }
 }
