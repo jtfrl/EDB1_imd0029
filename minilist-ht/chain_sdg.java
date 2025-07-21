@@ -89,39 +89,26 @@ class Chain{
          return false;
     }
 
-    /*
-     * 
-     *  public void showSdg(){
-        //int index=hash(v);
-        for(int i=0;i<table.length;i++){
-            if(table[i]!=null){
-                System.out.println("Index "+ i +": "+table[i].val);
-            }else{
-                System.out.println("Index "+ i +": "+null);
-            }
-        }
-     }
-
-     * 
-     */
-
      public void showChain(){
         //int index=hash(v);
         No atual;
 
         for(int i=0; i<table.length; i++){
+            
             System.out.println("Index: "+ i+": ");
             atual=table[i];
 
             if(atual==null){
-                System.out.println("Dado nulo");
+                System.out.println("null");
                 continue;
             }
-            /*
             while(atual!=null){
-                //mostra a lista ligada
+                System.out.println(atual.val);
+                atual=atual.prox;
+                if(atual!=null) System.out.println("->");
             }
-                 */
+            System.out.println();
+            
         }
 
      }
@@ -199,7 +186,10 @@ class Sdg{
 }
 
 
-public static boolean primeYN(int v){
+
+public class chain_sdg {
+
+    public static boolean primeYN(int v){
         int r=(int)Math.sqrt(v);
         int i=2;
         //while()
@@ -212,15 +202,8 @@ public static boolean primeYN(int v){
             }
         }return true;
     }
-
-
-
-
-
-public class chain_sdg {
     public static void main(String[] args){
 
-             
 
        Sdg l1= new Sdg(10);
        Chain l2= new Chain(10);
@@ -237,16 +220,18 @@ public class chain_sdg {
        l1.insert(56);
 
        l1.showSdg();
+       System.out.print("\n");
     
-       for(int k=31;k<200;k++){
-            r=primeYN(k);
-        if(r==true && l2.tam()!=10){
-            l2.insert(k);
+        for(int k=31;k<200 && l2.tam()<10 ;k++){
+                if(primeYN(k)){
+                    l2.insert(k);
+                }
         }
-       }
-     
-       l2.showChain();
+
+         l2.showChain();
+
+        //removal to be used
 
 
-    }
+       }      
 }
