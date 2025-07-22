@@ -7,10 +7,12 @@ import java.lang.Math;
 
 class No{
     int val;
+    String nome;
     No prox;
 
-    No(int v){
+    No(int v, String n){
         this.val=v;
+        this.nome=n;
         this.prox=null;
     }
 }
@@ -33,9 +35,9 @@ class Chain{
     }
 
 
-    public void insert(int value){
+    public void insert(int value, String n){
         int index=hash(value); //cada índice recebe um hash
-        No novo_no= new No(value);
+        No novo_no= new No(value, n);
 
         if(table[index]==null){
             table[index]=novo_no;
@@ -90,11 +92,11 @@ class Chain{
     }
 
      public void showChain(){
-        //int index=hash(v);
-        No atual;
-
+    
+      //  boolean firstOrNot=true;
         for(int i=0; i<table.length; i++){
-            
+            No atual=table[i];
+            /*
             System.out.println("Index: "+ i+": ");
             atual=table[i];
 
@@ -102,10 +104,17 @@ class Chain{
                 System.out.println("null");
                 continue;
             }
-            while(atual!=null){
-                System.out.println(atual.val);
+             */           
+        while(atual!=null){
+               // if(firstOrNot) System.out.println(" -> ");
+                //System.out.println("Index: "+ i+": ");
+                //System.out.println();
+                System.out.print(atual.val+" - "+atual.nome+" -> ");
+                //firstOrNot=false;
+                String seta=" -> ";
+
                 atual=atual.prox;
-                if(atual!=null) System.out.println("->");
+
             }
             System.out.println();
             
@@ -146,12 +155,12 @@ class Sdg{
     }
 
 
-    public void insert(int v){
+    public void insert(int v, String n){
         int index=hash(v);
         while(table[index]!=null){
             index=(index+1)%table.length;
         }
-        table[index]=new No(v);
+        table[index]=new No(v, n);
         size++;
     }
 
@@ -176,7 +185,7 @@ class Sdg{
         //int index=hash(v);
         for(int i=0;i<table.length;i++){
             if(table[i]!=null){
-                System.out.println("Index "+ i +": "+table[i].val);
+                System.out.println("Index "+ i +": "+table[i].val+" "+table[i].nome);
             }else{
                 System.out.println("Index "+ i +": "+null);
             }
@@ -190,13 +199,13 @@ class Sdg{
 public class chain_sdg {
 
     public static boolean primeYN(int v){
-        int r=(int)Math.sqrt(v);
-        int i=2;
+        double r=Math.sqrt(v);
+        int i=3;
         //while()
         if(v%2==0) return false;
         if(v==2) return true;
 
-        for(;i<r;i++){
+        for(;i<=r;i++){
             if(v%i==0){
                 return false;
             }
@@ -208,27 +217,30 @@ public class chain_sdg {
        Sdg l1= new Sdg(10);
        Chain l2= new Chain(10);
 
-       l1.insert(5);
-       l1.insert(19);
-       l1.insert(37);
-       l1.insert(18);
-       l1.insert(55);
-       l1.insert(55);
-       l1.insert(19);
-       l1.insert(370);
-       l1.insert(17);
-       l1.insert(56);
+       l1.insert(58989, "Otávio Guedes");
+       l1.insert(19980, "Guilherme Sampaio");
+       l1.insert(37989, "Sandra Viana");
+       l1.insert(18989, "Vera Fischer");
+       l1.insert(55989, "Firmino Getúlio");
+       l1.insert(55989, "Túlio Novaes");
+       l1.insert(19981, "Natan Filho");
+       l1.insert(37097, "Fux da Silva");
+       l1.insert(17989, "Alexandre de Moraes");
+       l1.insert(56986, "Flávio Dino");
 
        l1.showSdg();
-       System.out.print("\n");
-    
+       System.out.print("\n"); //hashs iguais a 9 → apenas 58989 vai para abaixo de todos
+       //indo para última das posições livres
+        int count=1;
         for(int k=31;k<200 && l2.tam()<10 ;k++){
+            String info="Primo: "+count;
                 if(primeYN(k)){
-                    l2.insert(k);
+                    l2.insert(k, info);
+                    count++;
                 }
         }
 
-         l2.showChain();
+         l2.showChain(); //cada primo que tenha mod igual fica dentro de uma única lista
 
         //removal to be used
 
