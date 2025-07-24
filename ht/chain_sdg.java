@@ -92,32 +92,19 @@ class Chain{
     }
 
      public void showChain(){
-    
-      //  boolean firstOrNot=true;
-        for(int i=0; i<table.length; i++){
-            No atual=table[i];
-            /*
-            System.out.println("Index: "+ i+": ");
-            atual=table[i];
+            for(int i=0; i<table.length; i++){
+            No atual=table[i];    
 
-            if(atual==null){
-                System.out.println("null");
-                continue;
-            }
-             */           
-        while(atual!=null){
-               // if(firstOrNot) System.out.println(" -> ");
-                //System.out.println("Index: "+ i+": ");
-                //System.out.println();
-                System.out.print(atual.val+" - "+atual.nome+" -> ");
-                //firstOrNot=false;
-                String seta=" -> ";
-
-                atual=atual.prox;
-
-            }
-            System.out.println();
+        System.out.println("\nIndex: "+i);
             
+        if(atual==null) System.out.println(">>> null");
+        System.out.print("");
+
+        while(atual!=null){
+                System.out.print(atual.val+" - "+atual.nome+(atual.prox != null ? " -> ":""));
+                atual=atual.prox;
+            }
+            System.out.println("");
         }
 
      }
