@@ -70,7 +70,7 @@ public class PerfectHT{
     	System.out.println("Informe o texto para o hash: ");
     	String n=s.nextLine();
     	
-    	//impl: laço para tomar cada letra 
+    	//impl: laço para tomar cada letra  
     	for(int i=0; i<n.length(); i++){
     	    
     	}
