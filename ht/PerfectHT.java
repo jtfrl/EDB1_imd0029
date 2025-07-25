@@ -26,11 +26,12 @@ class Th{
         size=0;
     }
     
-    
+    //erro no laço
     private	long hash(String k){
 	    int h=0;
-	    for(int i=0; i<k.length; i++)
+	    for(int i=0; i<k.length; i++){
 	       h= (31*charAt(i))%59;
+        }
 	       
 	   return h;
 	}
@@ -55,6 +56,10 @@ class Th{
         }
     }
 
+    public int tam(){
+        return size;
+    }
+
 
 
 }
@@ -65,17 +70,18 @@ public class PerfectHT{
 		System.out.println("HASHING DATA");
 		Scanner s=new Scanner(System.in);
     
-    	
-    	//dado do No aqui
     	System.out.println("Informe o texto para o hash: ");
-    	String n=s.nextLine();
-    	
-    	//impl: laço para tomar cada letra  
-    	for(int i=0; i<n.length(); i++){
-    	    
-    	}
+    	String[] n=s.nextLine();
+       // String[] word=s.split("\\s+"); separação
+    	Th ht = new Th(10);
+        //char data;
+        for(int i=0;i<n.length; i++){
+            ht.insert(n[i]);
+        }
 
-    	
+        ht.showTh();
+
+        s.close();
     	
 	}
 }
