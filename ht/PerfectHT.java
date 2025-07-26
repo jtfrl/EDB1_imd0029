@@ -27,10 +27,11 @@ class Th{
     }
     
     //erro no laço
-    private	long hash(String k){
+    private	int hash(String k){
 	    int h=0;
-	    for(int i=0; i<k.length; i++){
-	       h= (31*charAt(i))%59;
+	    for(int i=0; i<k.length(); i++){
+	      // h= (31*h+k.charAt(i))%47;
+	      h= (31*k.charAt(i))%47; //k quando assume x, p. ex, vai a 88
         }
 	       
 	   return h;
@@ -50,20 +51,20 @@ class Th{
     }
     
     public void showTh(/*No */ ){
-       // index=hash()
+       // index=hash()]
+       System.out.println("\n");
+       System.out.println("Index \tHash \t   Letter ");
+       System.out.println();
         for(int i=0; i<table.length;i++){
-            if(table[i]!=null) System.out.println("Index ");
+            if(table[i]!=null) System.out.println(i+"\t"+table[i]+"\t"+table[i].data);
         }
+        System.out.println();
     }
 
     public int tam(){
         return size;
     }
-
-
-
 }
-
 
 public class PerfectHT{
 	public static void main(String[] args) {
@@ -71,13 +72,16 @@ public class PerfectHT{
 		Scanner s=new Scanner(System.in);
     
     	System.out.println("Informe o texto para o hash: ");
-    	String[] n=s.nextLine();
-       // String[] word=s.split("\\s+"); separação
-    	Th ht = new Th(10);
-        //char data;
-        for(int i=0;i<n.length; i++){
-            ht.insert(n[i]);
-        }
+    	String n=s.nextLine();
+    
+    	Th ht = new Th(50);
+
+       // while(!n.isEmpty()){
+            for(int i=0; i<n.length(); i++){
+                char c=n.charAt(i);
+                ht.insert(String.valueOf(c));
+            }
+        //}
 
         ht.showTh();
 
