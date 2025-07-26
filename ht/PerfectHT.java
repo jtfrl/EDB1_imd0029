@@ -15,6 +15,14 @@ class No{
         this.data=d;
         this.prox=null;
     }
+
+    /*
+    @Override
+
+    public String toString(){
+        return data;
+    }
+         */
 }
 
 class Th{
@@ -29,9 +37,13 @@ class Th{
     //erro no laço
     private	int hash(String k){
 	    int h=0;
+
+        //k quando assume x, p. ex, vai a 88 (pos no ascii)
 	    for(int i=0; i<k.length(); i++){
-	      // h= (31*h+k.charAt(i))%47;
-	      h= (31*k.charAt(i))%47; //k quando assume x, p. ex, vai a 88
+            /* ### OUTRAS VERSÕES DE HASH ### */
+	      // h= (31*h+k.charAt(i))%47; 
+	      //h= (31*k.charAt(i))%47; 
+            h= (31*k.charAt(i))%50; //aproveita toda a extensão da tabela
         }
 	       
 	   return h;
@@ -53,10 +65,10 @@ class Th{
     public void showTh(/*No */ ){
        // index=hash()]
        System.out.println("\n");
-       System.out.println("Index \tHash \t   Letter ");
+       System.out.println("Index \tMemory Address \t    Letter ");
        System.out.println();
         for(int i=0; i<table.length;i++){
-            if(table[i]!=null) System.out.println(i+"\t"+table[i]+"\t"+table[i].data);
+            if(table[i]!=null) System.out.println(i+"\t"+table[i]+"\t\t"+table[i].data);
         }
         System.out.println();
     }
@@ -76,12 +88,13 @@ public class PerfectHT{
     
     	Th ht = new Th(50);
 
-       // while(!n.isEmpty()){
+       // posições em memória ficam se alternando, conforme a operação de hash e 
+       // o valor de M -- os endereços permanecem os mesmos, mas alocando outros valores
             for(int i=0; i<n.length(); i++){
                 char c=n.charAt(i);
                 ht.insert(String.valueOf(c));
             }
-        //}
+    
 
         ht.showTh();
 
