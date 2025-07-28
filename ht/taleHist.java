@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList; //!!! isso pode atrapalhar no uso de HT? 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Scanner;
 
 
 public class GHist extends Application{
@@ -63,9 +64,11 @@ public class fileTxt{
 
     }
 
-    public String[] del_RepWords(String[] txt){
+    public String[] del_RepWords(String[] txtvector){
         //String[] allWordsThatMatter;
-        long strLen=txt.length();
+        long strLen=txtvector.length;
+
+        //como txtvector é um array, então length é apenas propriedade, não método
 
         Set<String> uniqueWords=new HashSet<>();
         //Set já lida com o caso de haver múltiplos dados iguais
@@ -85,12 +88,84 @@ public class fileTxt{
     }
 }
 
+class No{
+    String data;
+    No prox;
+    
+    No(String d){
+        this.data=d;
+        this.prox=null;
+    }
+}
+
+
+class htable{
+    private No[] table;
+    private int size;
+
+    public htable(int cap){
+        table=new No[cap];
+        size=0;
+    }
+
+    private long hash(String k){
+        long h=0;
+
+        for(int i=0; i<k.length();i++){
+            h=(31*k.charAt(i))%100; //M=100
+        }
+
+        return h;
+    }
+
+    public void insert(String w){
+        long index=hash(n);
+        No novo_no=new No(n);
+
+        if(table[index]==null){
+            table[index]=novo_no;
+       }else{
+            novo_no.prox=table[index]; 
+            //dessa forma o valor do próximo nó é null
+            table[index]=novo_no;
+       }
+       size++;
+    }
+
+    public int tam(){
+        return size;
+    }
+
+}
 
 
 
 public class taleHist{
     public static void Main (String [] args){
-        //impl
+        Scanner s=new Scanner(System.in);
+
+        System.out.println("Insira o arquivo .txt");
+        String fileName=s.nextLine();
+        fileTxt f=new fileTxt(fileName);
+
+        f.readFile(fileName);
+        //f.del_RepWords(fileName);
+
+        String[] u_words=del_RepWords(f.txt);
+
+        htable t=new htable();
+
+        for(i=0;i<u_words.length;i++){
+            table.insert(u_words[i]);
+        }
+
+        
+
+
+
+
+
+
     }
         
 }

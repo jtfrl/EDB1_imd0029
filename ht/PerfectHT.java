@@ -34,7 +34,6 @@ class Th{
         size=0;
     }
     
-    //erro no laço
     private	int hash(String k){
 	    int h=0;
 
