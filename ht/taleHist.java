@@ -177,6 +177,9 @@ public class taleHist{
                 series.getData().add(new XYChart.Data<>(String.valueOf(i), wordsOnACertIx));
             }
         }
+      //series deve conter todos os dados: frequencias para cada um dos índices (0 a 99)
+      
+      
 
 
         Stage stage;
