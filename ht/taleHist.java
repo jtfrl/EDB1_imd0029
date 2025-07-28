@@ -27,7 +27,7 @@ public class GHist extends Application{
         yAx.setLabel("Freq.");
         
         BarChart<String, Number> barChart=new BarChart<>(xAx, yAx);
-        barChart.setTitle("Histograma para frequência de palavras");
+        barChart.setTitle("Histograma para frequência de palavras para cada posição na tabela em hash");
     
         XYChart.Series<String, Number> series=new XYChart.Series<>();
         /*### como adicionar dados ###*/
@@ -36,7 +36,7 @@ public class GHist extends Application{
         barChart.getData().add(series);
         
         Scene sceneDisplay=new Scene(barChart, 1000, 1000);
-        stage.setScene(scene);
+        stage.setScene(sceneDisplay);
         stage.show();
           
     }
@@ -110,16 +110,14 @@ class htable{
 
     private long hash(String k){
         long h=0;
-
         for(int i=0; i<k.length();i++){
             h=(31*k.charAt(i))%100; //M=100
         }
-
         return h;
     }
 
     public void insert(String w){
-        long index=hash(n);
+        long index=hash(w);
         No novo_no=new No(n);
 
         if(table[index]==null){
@@ -136,6 +134,18 @@ class htable{
         return size;
     }
 
+    
+    public int countAtIndex(int index){
+       int count=0;
+       No atual=table[index];
+       
+       while(atual!=null){
+            count++;
+            atual=atual.prox;
+       }
+
+       return count;
+    }
 }
 
 
@@ -156,15 +166,20 @@ public class taleHist{
         htable t=new htable();
 
         for(i=0;i<u_words.length;i++){
-            table.insert(u_words[i]);
+            t.insert(u_words[i]); //hash já feito aqui
         }
 
         
 
+        for(int i=0;i<table.length;i++){
+            int wordsOnACertIx=table.countAtIndex(i); //palavras em um certo índice
+            if(wordsOnACertIx>0){
+                series.getData().add(new XYChart.Data<>(String.valueOf(i), wordsOnACertIx));
+            }
+        }
 
 
-
-
+        Stage stage;
 
     }
         
