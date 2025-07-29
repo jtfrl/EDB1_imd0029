@@ -16,9 +16,15 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 
-public class GHist extends Application{
-    @Override
+ class GHist extends Application{
+    private htable table;
+
+    public GHist(htable table){
+        this.table=table;
+    }
     
+
+    @Override
     public void start(Stage stage){
         CategoryAxis xAx=new CategoryAxis(); //valores para M
         NumberAxis yAx=new NumberAxis(); //valores de frequência
@@ -30,19 +36,30 @@ public class GHist extends Application{
         barChart.setTitle("Histograma para frequência de palavras para cada posição na tabela em hash");
     
         XYChart.Series<String, Number> series=new XYChart.Series<>();
+        //series.setName("Freq. de palavras para cada índice");
+
         /*### como adicionar dados ###*/
         //series.getData().add(new XYChart.Data<>("B", 20)); 
+
+      //series deve conter todos os dados: frequencias para cada um dos índices (0 a 99)
+        for(int i=0;i<table.length;i++){
+            int wordsOnACertIx=table.countAtIndex(i); //palavras em um certo índice
+            if(wordsOnACertIx>0){
+                series.getData().add(new XYChart.Data<>(String.valueOf(i), wordsOnACertIx));
+            }
+        }
         
         barChart.getData().add(series);
         
-        Scene sceneDisplay=new Scene(barChart, 1000, 1000);
+        Scene sceneDisplay=new Scene(barChart, 1000, 600);
         stage.setScene(sceneDisplay);
+        stage.setTitle("Histograma (q. 1 - Exercício 3)");
         stage.show();
           
     }
 }
 
-public class fileTxt{
+class fileTxt{
     String[] txt;
     
 
@@ -64,7 +81,7 @@ public class fileTxt{
 
     }
 
-    public String[] del_RepWords(String[] txtvector){
+    public String[] del_RepWords(){
         //String[] allWordsThatMatter;
         long strLen=txtvector.length;
 
@@ -102,16 +119,17 @@ class No{
 class htable{
     private No[] table;
     private int size;
+    private final int M=100;
 
-    public htable(int cap){
-        table=new No[cap];
+    public htable(){
+        table=new No[M];
         size=0;
     }
 
     private long hash(String k){
         long h=0;
         for(int i=0; i<k.length();i++){
-            h=(31*k.charAt(i))%100; //M=100
+            h=(31*k.charAt(i))%M; //M=100
         }
         return h;
     }
@@ -146,6 +164,11 @@ class htable{
 
        return count;
     }
+
+
+    public int getTablelen(){
+        return M;
+    }
 }
 
 
@@ -161,7 +184,7 @@ public class taleHist{
         f.readFile(fileName);
         //f.del_RepWords(fileName);
 
-        String[] u_words=del_RepWords(f.txt);
+        String[] u_words=f.del_RepWords();
 
         htable t=new htable();
 
@@ -169,21 +192,6 @@ public class taleHist{
             t.insert(u_words[i]); //hash já feito aqui
         }
 
-        
-
-        for(int i=0;i<table.length;i++){
-            int wordsOnACertIx=table.countAtIndex(i); //palavras em um certo índice
-            if(wordsOnACertIx>0){
-                series.getData().add(new XYChart.Data<>(String.valueOf(i), wordsOnACertIx));
-            }
-        }
-      //series deve conter todos os dados: frequencias para cada um dos índices (0 a 99)
-      
-      
-
-
-        Stage stage;
-
+        Application.launch(GHist.class, args);//carregamento de histograma
     }
-        
-}
+} 
