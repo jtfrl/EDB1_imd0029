@@ -28,22 +28,41 @@
 
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
-                    <configuration>
-                        <release>11</release>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.openjfx</groupId>
-                    <artifactId>javafx-maven-plugin</artifactId>
-                    <version>0.0.8</version>
+                   <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>3.1.0</version>
                     <configuration>
                         <mainClass>taleHist</mainClass>
+                        <systemProperties>
+                            <systemProperty>
+                                <key>prism.order</key>
+                                <value>sw</value>
+                            </systemProperty>
+                            <systemProperty>
+                                <key>java.awt.headless</key>
+                                <value>true</value>
+                            </systemProperty>
+                        </systemProperties>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <id>default-cli</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>java</goal>
+                            </goals>
+                        </execution>
+    </executions>
                 </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>taleHist</mainClass>
+                </configuration>
+            </plugin>
             </plugins>
         </build>
 </project>

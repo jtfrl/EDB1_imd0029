@@ -17,10 +17,15 @@ import java.util.Scanner;
 
 
  class GHist extends Application{
-    private htable table;
+    private static htable table;
 
-    public GHist(htable table){
-        this.table=table;
+    public GHist(){
+       // this.table=table;
+    }
+
+    @Override
+    public void init(){
+        //tem que ter alguma coisa aqui??
     }
     
 
@@ -28,6 +33,8 @@ import java.util.Scanner;
     public void start(Stage stage){
         CategoryAxis xAx=new CategoryAxis(); //valores para M
         NumberAxis yAx=new NumberAxis(); //valores de frequência
+
+        
     
         xAx.setLabel("Posições na tabela");
         yAx.setLabel("Freq.");
@@ -42,8 +49,17 @@ import java.util.Scanner;
         //series.getData().add(new XYChart.Data<>("B", 20)); 
         htable table=new htable();
 
+         if (table == null) {
+            throw new IllegalStateException("Table not initialized!");
+        }
+/*
+        public static void setTable(htable t) {
+            table = t;
+        }
+             */
+
       //series deve conter todos os dados: frequencias para cada um dos índices (0 a 99)
-        for(int i=0;i<table.tam();i++){
+        for(int i=0;i<table.getTablelen();i++){
             int wordsOnACertIx=table.countAtIndex(i); //palavras em um certo índice
             if(wordsOnACertIx>0){
                 series.getData().add(new XYChart.Data<>(String.valueOf(i), wordsOnACertIx));
@@ -66,6 +82,7 @@ class fileTxt{
 
     fileTxt(String[] txt){
         this.txt=txt;
+        //this.readFile(filename);
     }
     
     public void readFile(String filePath){
@@ -82,8 +99,7 @@ class fileTxt{
 
     }
 
-    public String[] del_RepWords(){
-        String[] txtvector;
+    public String[] del_RepWords(String[] txtvector){
         long strLen=txtvector.length;
 
         //como txtvector é um array, então length é apenas propriedade, não método
@@ -175,17 +191,19 @@ class htable{
 
 
 public class taleHist{
-    public static void Main (String [] args){
+    public static void main (String [] args){
+    // System.setProperty("prism.order", "sw"); Force software rendering
+
         Scanner s=new Scanner(System.in);
 
         System.out.println("Insira o arquivo .txt");
         String fileName=s.nextLine();
-        fileTxt f=new fileTxt(fileName);
+        fileTxt f=new fileTxt(new String[0]);
 
         f.readFile(fileName);
         //f.del_RepWords(fileName);
 
-        String[] u_words=f.del_RepWords();
+        String[] u_words=f.del_RepWords(f.txt);
 
         htable t=new htable();
 
@@ -193,6 +211,10 @@ public class taleHist{
             t.insert(u_words[i]); //hash já feito aqui
         }
 
-        Application.launch(GHist.class, args);//carregamento de histograma
+        //GHist ghist=new GHist(t);
+        GHist.setTable(t);
+      //  Application.launch(GHist.class, args);//carregamento de histograma
+        new Thread(() -> Application.launch(GHist.class, args)).start();
+
     }
 } 
