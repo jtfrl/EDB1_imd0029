@@ -1,4 +1,5 @@
 //Escreva um exemplo de cliente para fila análogo ao que usamos para pilha
+//Conteúdo (Exercício 1): https://www.ime.usp.br/~pf/estruturas-de-dados/aulas/queue.html
 
 import java.util.Scanner;
 
