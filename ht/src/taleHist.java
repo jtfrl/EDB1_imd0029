@@ -40,9 +40,10 @@ import java.util.Scanner;
 
         /*### como adicionar dados ###*/
         //series.getData().add(new XYChart.Data<>("B", 20)); 
+        htable table=new htable();
 
       //series deve conter todos os dados: frequencias para cada um dos índices (0 a 99)
-        for(int i=0;i<table.length;i++){
+        for(int i=0;i<table.tam();i++){
             int wordsOnACertIx=table.countAtIndex(i); //palavras em um certo índice
             if(wordsOnACertIx>0){
                 series.getData().add(new XYChart.Data<>(String.valueOf(i), wordsOnACertIx));
@@ -68,7 +69,7 @@ class fileTxt{
     }
     
     public void readFile(String filePath){
-        ArrayList<String> lines=new Arraylist<>();
+        ArrayList<String> lines=new ArrayList<>();
         try(BufferedReader br=new BufferedReader(new FileReader(filePath))){
             String line;
             while((line=br.readLine())!=null) lines.add(line);
@@ -82,7 +83,7 @@ class fileTxt{
     }
 
     public String[] del_RepWords(){
-        //String[] allWordsThatMatter;
+        String[] txtvector;
         long strLen=txtvector.length;
 
         //como txtvector é um array, então length é apenas propriedade, não método
@@ -91,7 +92,7 @@ class fileTxt{
         //Set já lida com o caso de haver múltiplos dados iguais
         //apenas um deles entra dentro container acima
 
-        for(long i=0; i<strLen;++i){
+        for(int i=0; i<strLen;++i){
             uniqueWords.add(txt[i]);
         }
        /* 
@@ -126,8 +127,8 @@ class htable{
         size=0;
     }
 
-    private long hash(String k){
-        long h=0;
+    private int hash(String k){
+        int h=0;
         for(int i=0; i<k.length();i++){
             h=(31*k.charAt(i))%M; //M=100
         }
@@ -135,8 +136,8 @@ class htable{
     }
 
     public void insert(String w){
-        long index=hash(w);
-        No novo_no=new No(n);
+        int index=hash(w);
+        No novo_no=new No(w);
 
         if(table[index]==null){
             table[index]=novo_no;
@@ -167,7 +168,7 @@ class htable{
 
 
     public int getTablelen(){
-        return M;
+        return table.length;
     }
 }
 
@@ -188,7 +189,7 @@ public class taleHist{
 
         htable t=new htable();
 
-        for(i=0;i<u_words.length;i++){
+        for(int i=0;i<u_words.length;i++){
             t.insert(u_words[i]); //hash já feito aqui
         }
 
