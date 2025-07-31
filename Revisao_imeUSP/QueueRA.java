@@ -8,7 +8,8 @@ do livro.
 import java.util.Scanner;
 import java.util.Queue;
 
-public class QueueRA<Int>{ //array com redimensionamento
+public class QueueRA{ //array com redimensionamento 
+    //Não é útil usar template (necessário tipo Integer)
     
     private int[] v;
     private int N;
