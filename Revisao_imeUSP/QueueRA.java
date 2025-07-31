@@ -12,12 +12,15 @@ public class QueueRA<Int>{ //array com redimensionamento
     
     private int[] v;
     private int N;
-    private int atualIdx;
+    private int front;
+    private int rear;
     
     public QueueRA(){
         v=(Int[]) new Object[2]; //esse vetor deve ser circular
         //esse 2 seria tamanho?
         N=0;
+        front=0;
+        rear=0;
     }
 
     
@@ -29,26 +32,36 @@ public class QueueRA<Int>{ //array com redimensionamento
         if(N==v.lenght){
             resize(2*v.lenght);
         }else{
-            v[N++]=a;
+            //v[N++]=a;
+            v[rear]=a;
+            rear++;
+            N++;
         }
     }
     
     
     public int remove(){
+        if(isEmpty()) throw new RuntimeException("Fila vazia");
+
+        int item=v[front];
+        v[front]=0; //limpa o item
+        first++; //permite a volta no comprimento 
+        N--;
+
         int valorRmv=v[--N];
         if(N>0 && N==v.lenght/4) resize(v.lenght/2);
         
-        return valorRmv;
+        return item;
     }
     
     private void resize(int max){ 
         //'max' pode assumir o dobro do vetor v ou  
         // a metade do seu tamanho
-        int[] vecTemp; 
+        int[] vecTemp=new int[max]; 
         
-        vecTemp=(Int[]) new Object[max];
+        //vecTemp=(Int[]) new Object[max];
         for(int i=0;i<N;i++){
-            vecTemp[i]=v[i];
+            vecTemp[i]=v[(front+i)%v.length];
         }
         
         v=vecTemp;
