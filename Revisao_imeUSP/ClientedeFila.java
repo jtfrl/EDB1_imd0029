@@ -2,6 +2,8 @@
 //Conteúdo (Exercício 1): https://www.ime.usp.br/~pf/estruturas-de-dados/aulas/queue.html
 
 import java.util.Scanner;
+import java.util.Linkedlist;
+import java.util.Queue;
 
 public class ClientedeFila{
 	public static void main(String[] args) {
