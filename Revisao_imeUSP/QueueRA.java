@@ -12,9 +12,11 @@ public class QueueRA<Int>{ //array com redimensionamento
     
     private int[] v;
     private int N;
+    private int atualIdx;
     
     public QueueRA(){
         v=(Int[]) new Object[2]; //esse vetor deve ser circular
+        //esse 2 seria tamanho?
         N=0;
     }
 
@@ -23,7 +25,7 @@ public class QueueRA<Int>{ //array com redimensionamento
         return N==0;
     }
     
-    public void add(Int a){
+    public void add(int a){
         if(N==v.lenght){
             resize(2*v.lenght);
         }else{
@@ -50,6 +52,25 @@ public class QueueRA<Int>{ //array com redimensionamento
         }
         
         v=vecTemp;
+    }
+
+    public int Front(){
+        if(v.length==0){
+            System.out.println("Vetor sem elementos");
+             return -1;
+        }else{
+            return v[v.lenght-1];
+        }
+
+    }
+
+    public int Rear(){
+        if(v.length==0){
+            System.out.println("Vetor sem elementos");
+             return -1;
+        }else{
+            return v[0];
+        }
     }
     
 }
