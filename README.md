@@ -47,4 +47,11 @@ Esse é o repositório de códigos desenvolvidos na disciplina de Estruturas de 
   <li><b>aula08</b>: Algoritmo de ordenação por inserção (Insertion Sort)</li>
   <li><b>aula09</b>: Algoritmo de ordenação por bolha (Bubble Sort)</li>
   <li><b>aula10</b>: Listas encadeadas simples e duplas (estrutura de dados)</li>
-</ul>
+<ul>
+  * **Revisão_imeUSP**: Estudo aprofundado[^1] para praticar e aprender mais sobre EDB, baseado no material do Paulo Feofiloff.
+
+
+
+
+
+[^1]: Fora do semestre quando esse repositório foi criado. Ou seja, não envolve a didática do professor.
