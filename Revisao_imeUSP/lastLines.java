@@ -6,8 +6,11 @@ das ADTs que já estudamos.
  * 
  */
 
+//fifo: para eliminar as últimas k linhas, devemos 
+//considerar que o primeiro que entra é o primeiro que sai
+
 import java.util.Scanner;
-import java.util.Queue;
+import java.util.Stack;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -22,15 +25,24 @@ class No{
         this.ant=null;
     }
 }
-/*
-class Queue<String>{
 
-to be impl
+class Stack<String>{
+    private String[] v;
+    private int tam;
+    private String front;
+    private String rear;
 
 
-//need to have a add method
+    public Stack<String>(){
+        v=(String[]) new Object[];//tam a definir; com base em fileTxt
+
+        N=0;
+        front="";
+        rear="";
+    }
+
 }
-*/
+
 
 class fileTxt{
     String[] txt;
